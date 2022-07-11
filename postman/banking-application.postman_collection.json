@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "a8b569f2-f8a7-4caa-860e-030d66507700",
+		"name": "banking-application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Adam\",\r\n    \"surname\": \"Szkudlarek\",\r\n    \"pesel\": \"92010105035\",\r\n    \"startBalance\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user under 18 years old",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Adam\",\r\n    \"surname\": \"Szkudlarek\",\r\n    \"pesel\": \"10210105035\",\r\n    \"startBalance\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/user",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/92010105035",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"92010105035"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create subaccount",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pesel\": \"92010105035\",\r\n    \"currency\": \"PLN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/account/1/subaccount",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"account",
+						"1",
+						"subaccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create subaccount in USD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pesel\": \"92010105035\",\r\n    \"currency\": \"USD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/account/1/subaccount",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"account",
+						"1",
+						"subaccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get information about account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/account/3/PLN",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"account",
+						"3",
+						"PLN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make deposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": \"5000\",\r\n    \"accountId\": \"3\",\r\n    \"currency\": \"PLN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/account/deposit",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"account",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pesel\": \"92010105035\",\r\n    \"accountFromId\": 1,\r\n    \"accountToId\": 2,\r\n    \"amount\": \"500\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/account/exchange",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"account",
+						"exchange"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
